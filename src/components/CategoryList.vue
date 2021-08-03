@@ -38,7 +38,6 @@ export default {
       {title: 'Printers'},
     ],
   }),
-
 }
 </script>
 

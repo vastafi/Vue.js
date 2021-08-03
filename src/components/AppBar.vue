@@ -7,10 +7,11 @@
     <v-container class="py-0 fill-height">
       <v-btn
           v-for="link in links"
-          :key="link"
+          :key="link.route"
+          :to="link.route"
           text
       >
-        {{ link }}
+        {{ link.title }}
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -49,6 +50,7 @@
         <v-list-item
             v-for="(item, index) in items"
             :key="index"
+            :to="item.route"
         >
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
@@ -62,15 +64,14 @@ export default {
   name: "AppBar",
   data: () => ({
     links: [
-      'Products',
-      'Contacts',
-      'About',
-      'Updates',
+      {title:'Products',route:'/products'},
+      {title:'Contacts',route:'/contacts'},
+      {title:'About',route:'/about'},
     ],
     items: [
-      {title: 'View account'},
-      {title: 'Cart'},
-      {title: 'Settings'},
+      {title: 'Account',route:'/account'},
+      {title: 'Cart',route:'/cart'},
+      {title: 'Settings',route:'/settings'},
       {title: 'Log Out'},
     ],
   }),

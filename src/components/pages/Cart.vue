@@ -1,12 +1,10 @@
 <template>
-<div>
- <RouterView/>
-</div>
+<div>Cart</div>
 </template>
 
 <script>
 export default {
-  name: "Content"
+  name: "Cart"
 }
 </script>
 

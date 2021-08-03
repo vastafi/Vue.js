@@ -1,12 +1,11 @@
+
 <template>
-<div>
- <RouterView/>
-</div>
+<div>Contacts</div>
 </template>
 
 <script>
 export default {
-  name: "Content"
+  name: "Contacts"
 }
 </script>
 
