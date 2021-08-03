@@ -1,4 +1,9 @@
 <template>
+  <v-parallax
+      dark
+      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+  >
+
   <v-container>
   <v-avatar
       class="profile"
@@ -33,6 +38,7 @@
     </v-timeline>
   </v-card-text>
     </v-container>
+  </v-parallax>
 </template>
 
 <script>
