@@ -19,6 +19,7 @@
         </v-row>
       </v-container>
     </v-main>
+    <Footer></Footer>
   </v-app>
 </template>
 
@@ -26,8 +27,9 @@
 import Content from "./components/Content";
 import AppBar from "./components/AppBar";
 import CategoryList from "./components/CategoryList";
+import Footer from "./components/pages/Footer";
 
 export default {
-  components: {CategoryList, AppBar, Content},
+  components: {Footer, CategoryList, AppBar, Content},
 }
 </script>
