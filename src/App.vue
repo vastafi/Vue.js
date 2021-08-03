@@ -6,7 +6,7 @@
         <v-row>
           <v-col cols="2">
             <CategoryList></CategoryList>
-                     </v-col>
+          </v-col>
 
           <v-col>
             <v-sheet
@@ -29,6 +29,5 @@ import CategoryList from "./components/CategoryList";
 
 export default {
   components: {CategoryList, AppBar, Content},
-
 }
 </script>

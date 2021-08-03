@@ -14,25 +14,31 @@
 
       <v-divider class="my-2"></v-divider>
       <v-list-item
-          v-for="n in 3"
-          :key="n"
-          link
+
+          v-for="(item, index) in items"
+          :key="index"
       >
         <v-list-item-content>
           <v-list-item-title>
-            List Item {{ n }}
+            {{ item.title }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-
-
     </v-list>
   </v-sheet>
 </template>
 
 <script>
 export default {
-  name: "CategoryList"
+  name: "CategoryList",
+  data: () => ({
+    items: [
+      {title: 'Phones'},
+      {title: 'Notebooks'},
+      {title: 'Printers'},
+    ],
+  }),
+
 }
 </script>
 
