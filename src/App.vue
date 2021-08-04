@@ -1,26 +1,26 @@
 <template>
   <v-app id="inspire">
-    <AppBar></AppBar>
+    <AppBar />
     <v-main class="grey lighten-3">
       <v-container>
         <v-row>
           <v-col cols="2">
-            <CategoryList></CategoryList>
+            <CategoryList />
           </v-col>
 
           <v-col>
             <v-sheet
-                min-height="70vh"
-                rounded="lg"
+              min-height="70vh"
+              rounded="lg"
             >
-              <Content></Content>
+              <Content />
             </v-sheet>
           </v-col>
         </v-row>
       </v-container>
     </v-main>
-    <Paginations></Paginations>
-    <Footer></Footer>
+    <Paginations />
+    <Footer />
   </v-app>
 </template>
 

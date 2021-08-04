@@ -5,11 +5,11 @@
         <v-col cols="4">
           <v-container class="max-width">
             <v-pagination
-                v-model="page"
-                class="my-4"
-                :length="15"
-                circle
-            ></v-pagination>
+              v-model="page"
+              class="my-4"
+              :length="15"
+              circle
+            />
           </v-container>
         </v-col>
       </v-row>

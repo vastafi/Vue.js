@@ -3,12 +3,12 @@
     <v-container>
       <v-row>
         <v-col
-            v-for="n in 6"
-            :key="n"
-            cols="4"
+          v-for="n in 6"
+          :key="n"
+          cols="4"
         >
-         <ProductsItems></ProductsItems>
-           </v-col>
+          <ProductsItems />
+        </v-col>
       </v-row>
     </v-container>
   </v-main>
