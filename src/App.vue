@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <AppBar />
 
-<Content></Content>
+    <Content/>
     <Footer />
   </v-app>
 </template>
