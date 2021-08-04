@@ -1,5 +1,12 @@
 <template>
-  <validation-observer
+  <v-container>
+    <v-row>
+      <v-col cols="3">
+        <DataPicker/>
+      </v-col>
+      <v-spacer />
+      <v-col cols="8">
+        <validation-observer
     ref="observer"
     v-slot="{ invalid }"
   >
@@ -86,12 +93,16 @@
         clear
       </v-btn>
     </form>
+
   </validation-observer>
+      </v-col>
+  </v-row></v-container>
 </template>
 
 <script>
 import {digits, email, max, regex, required} from 'vee-validate/dist/rules'
 import {extend, setInteractionMode, ValidationObserver, ValidationProvider} from 'vee-validate'
+import DataPicker from "./DataPicker";
 
 setInteractionMode('eager')
 
@@ -123,6 +134,7 @@ extend('email', {
 export default {
   name: "Contacts",
   components: {
+    DataPicker,
     ValidationProvider,
     ValidationObserver,
 
