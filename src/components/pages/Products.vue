@@ -1,24 +1,34 @@
 <template>
   <v-main>
-    <v-container>
+    <v-container class="white">
       <v-row>
+        <v-col cols="2">
+          <CategoryList/>
+        </v-col>
+
         <v-col
-          v-for="n in 6"
-          :key="n"
-          cols="4"
+            v-for="n in 3"
+            :key="n"
+            cols="3"
         >
-          <ProductsItems />
+          <ProductsItems/>
         </v-col>
       </v-row>
+      <Paginations></Paginations>
     </v-container>
   </v-main>
+
 </template>
 <script>
 import ProductsItems from "./ProductsItems";
+import CategoryList from "../CategoryList";
+import Paginations from "./Paginations";
+
 export default {
   name: "Products",
-  components: {ProductsItems},
+  components: {Paginations, CategoryList, ProductsItems},
 }
+
 </script>
 
 <style scoped>
