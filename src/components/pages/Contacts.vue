@@ -1,5 +1,39 @@
 <template>
   <v-container>
+    <v-card>
+      <v-card-title class="purple lighten-2">
+        <v-icon
+            dark
+            size="42"
+        >
+          mdi-home-outline
+        </v-icon>
+        <h2 class="text-h4 white--text font-weight-light">
+          Simple Store
+        </h2>
+      </v-card-title>
+      <v-container>
+        <v-row>
+          <v-col
+              cols="12"
+              md="8"
+          >
+            Tel: +373 60 80 90 10
+            <br> E-mail: simpleStore@mail.ru
+          </v-col>
+          <v-col
+              class="hidden-sm-and-down text-right"
+              md="2"
+          >
+            <v-icon size="64">
+              mdi-calendar-text
+            </v-icon>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-card>
+  <br>
+    <br>
     <v-row>
       <v-col cols="3">
         <DataPicker/>
