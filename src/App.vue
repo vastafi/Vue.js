@@ -19,6 +19,7 @@
         </v-row>
       </v-container>
     </v-main>
+    <Paginations></Paginations>
     <Footer></Footer>
   </v-app>
 </template>
@@ -28,8 +29,9 @@ import Content from "./components/Content";
 import AppBar from "./components/AppBar";
 import CategoryList from "./components/CategoryList";
 import Footer from "./components/pages/Footer";
+import Paginations from "./components/pages/Paginations";
 
 export default {
-  components: {Footer, CategoryList, AppBar, Content},
+  components: {Paginations, Footer, CategoryList, AppBar, Content},
 }
 </script>
