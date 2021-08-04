@@ -1,9 +1,9 @@
 <template>
- <v-main class="grey lighten-3">
+  <v-main class="grey lighten-3">
     <v-container>
-    <RouterView />
+      <RouterView />
     </v-container>
- </v-main>
+  </v-main>
 </template>
 
 <script>

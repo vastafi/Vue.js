@@ -1,8 +1,9 @@
 <template>
   <v-row>
-    Welcome to SimpleSore, your number one source for all things electronic: phones, laptops, printers. We are dedicated
+    <br> Welcome to SimpleSore, your number one source for all things electronic: phones, laptops, printers. We are
+    dedicated
     to offering you the best of the stock we have, with a focus on three features: reliability, customer service and
-    uniqueness.  I turned work and inspiration into a booming online store.
+    uniqueness. I turned work and inspiration into a booming online store.
     <br> We now serve customers around the world and are excited to be a part of fair trade in the industry.
     <v-divider />
 
@@ -30,7 +31,8 @@
                 cols="12"
                 md="10"
               >
-                Founded in 2021, SimpleStore has come a long way since its inception, as beginners in this field we have tried to dedicate our time and make an obvious result.
+                Founded in 2021, SimpleStore has come a long way since its inception, as beginners in this field we have
+                tried to dedicate our time and make an obvious result.
               </v-col>
               <v-col
                 class="hidden-sm-and-down text-right"
@@ -69,7 +71,8 @@
                 cols="12"
                 md="10"
               >
-                Do you know that now you can benefit from 0% credit for 4 months without advance on all products? Write to us and we will tell you how you get the offer.
+                Do you know that now you can benefit from 0% credit for 4 months without advance on all products? Write
+                to us and we will tell you how you get the offer.
               </v-col>
             </v-row>
           </v-container>
@@ -107,7 +110,8 @@
                 cols="12"
                 md="10"
               >
-                If you have any questions, do not hesitate to contact us at any time on the phone numbers on the contact page. We take care to answer all questions.
+                If you have any questions, do not hesitate to contact us at any time on the phone numbers on the contact
+                page. We take care to answer all questions.
               </v-col>
             </v-row>
           </v-container>
@@ -135,7 +139,8 @@
           <v-container>
             <v-row>
               <v-col>
-                We hope you enjoy our products as much as we offer you. If you have any questions or comments, please do not hesitate to contact us.
+                We hope you enjoy our products as much as we offer you. If you have any questions or comments, please do
+                not hesitate to contact us.
               </v-col>
             </v-row>
           </v-container>

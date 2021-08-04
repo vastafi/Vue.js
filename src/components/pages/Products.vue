@@ -19,13 +19,13 @@
   </v-main>
 </template>
 <script>
-import ProductsItems from "./ProductsItems";
 import CategoryList from "../CategoryList";
-import Paginations from "./Paginations";
+import ProductsItems from "../ProductsItems";
+import Paginations from "../Paginations";
 
 export default {
   name: "Products",
-  components: {Paginations, CategoryList, ProductsItems},
+  components: {Paginations, ProductsItems, CategoryList},
 }
 
 </script>
