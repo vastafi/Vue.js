@@ -1,7 +1,6 @@
 <template>
   <v-app id="inspire">
     <AppBar />
-
     <Content />
     <Footer />
   </v-app>
@@ -11,7 +10,6 @@
 
 import AppBar from "./components/AppBar";
 import Footer from "./components/Footer";
-
 import Content from "./components/Content";
 
 

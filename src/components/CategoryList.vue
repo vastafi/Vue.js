@@ -12,15 +12,15 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider class="my-2" />
+      <v-divider class="my-3" />
       <v-list-item
 
-        v-for="(item, index) in items"
+        v-for="(item, index) in $store.getters['categories/getList']"
         :key="index"
       >
         <v-list-item-content>
           <v-list-item-title>
-            {{ item.title }}
+            {{ item.name }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -38,6 +38,9 @@ export default {
       {title: 'Printers'},
     ],
   }),
+  mounted() {
+    this.$store.dispatch('categories/fetch')
+  }
 }
 </script>
 

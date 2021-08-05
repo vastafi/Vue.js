@@ -51,7 +51,7 @@ export default {
       {
         from: 'Today',
         message: `Canon i-SENSYS`,
-        time: '10:42am',
+        time: '8:42am',
         color: 'deep-purple lighten-1',
       },
       {
