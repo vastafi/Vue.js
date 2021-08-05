@@ -2,7 +2,7 @@
   <v-main>
     <v-container class="white">
       <v-row>
-        <v-col cols="2">
+        <v-col cols="3">
           <CategoryList />
         </v-col>
 
