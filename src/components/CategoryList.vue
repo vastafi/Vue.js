@@ -12,7 +12,13 @@
       </v-list-item>
 
       <v-divider class="my-3" />
-      <v-expansion-panels focusable>
+      <v-progress-linear
+        indeterminate
+        color="blue"
+      />
+      <v-expansion-panels
+        focusable
+      >
         <v-expansion-panel
           v-for="link in $store.getters['categories/getList']"
           :key="link"

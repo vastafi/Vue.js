@@ -9,6 +9,7 @@
         v-for="link in links"
         :key="link.route"
         :to="link.route"
+        color="grey darken-1"
         text
       >
         {{ link.title }}
@@ -23,7 +24,17 @@
           hide-details
           rounded
           solo-inverted
-        />
+        >
+          <template v-slot:label>
+            <v-icon
+              style="vertical-align: middle"
+              size="20"
+            >
+              fas fa-search
+            </v-icon>
+            Search for products
+          </template>
+        </v-text-field>
       </v-responsive>
     </v-container>
     <v-menu offset-y>
@@ -56,6 +67,17 @@
         >
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
+        <v-sheet class="pa-5">
+          <v-switch
+            v-model="isDarkMode"
+            inset
+            :label="`Dark mode`"
+            @change="() => {$store.dispatch('darkMode/changeMode', !$vuetify.theme.dark);
+                            $vuetify.theme.dark = $store.getters['darkMode/getIsDarkModeEnabled'];
+            }
+            "
+          />
+        </v-sheet>
       </v-list>
     </v-menu>
   </v-app-bar>
@@ -65,6 +87,7 @@
 export default {
   name: "AppBar",
   data: () => ({
+    isDarkMode: () => this.$store.getters['darkMode/getIsDarkModeEnabled'],
     links: [
       {title: 'Products', route: '/products'},
       {title: 'Contacts', route: '/contacts'},
@@ -77,6 +100,9 @@ export default {
       {title: 'Log Out'},
     ],
   }),
+  mounted() {
+    this.$vuetify.theme.dark = this.$store.getters['darkMode/getIsDarkModeEnabled'];
+  }
 }
 </script>
 
