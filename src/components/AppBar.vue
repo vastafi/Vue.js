@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     app
-    color="white"
+    class="indigo"
     flat
   >
     <v-container class="py-0 fill-height">
@@ -9,7 +9,7 @@
         v-for="link in links"
         :key="link.route"
         :to="link.route"
-        color="grey darken-1"
+        color="black"
         text
       >
         {{ link.title }}
@@ -26,13 +26,7 @@
           solo-inverted
         >
           <template v-slot:label>
-            <v-icon
-              style="vertical-align: middle"
-              size="20"
-            >
-              fas fa-search
-            </v-icon>
-            Search for products
+            Search products
           </template>
         </v-text-field>
       </v-responsive>

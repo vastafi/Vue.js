@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 
 const routes = [
     { path: '', component: Products },
-    { path: '/products', component: Products },
+    {path: '/products', component: Products, props: (router) => ({link: router.query.link})},
     { path: '/contacts', component: Contacts },
     { path: '/about', component: About },
     { path: '/cart', component: Cart },

@@ -11,6 +11,5 @@ const dataState = createPersistedState({
 const store = new Vuex.Store({
    modules,
    plugins: [dataState]
-
 })
-export default store
+export default store;

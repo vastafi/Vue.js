@@ -8,7 +8,7 @@
       flat
       tile
     >
-      <v-card-title class="indigo ">
+      <v-card-title class="indigo">
         <strong class="subheading">Get connected with us on social networks!</strong>
 
         <v-spacer />
