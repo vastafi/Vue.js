@@ -11,70 +11,68 @@
         Simple Store
       </h2>
     </v-card-title>
-    <v-container
-      v-if="$store.getters['products/getIsLoading']"
-    >
-      <v-row>
-        <v-col
-          cols="12"
-          md="4"
-        >
-          <v-skeleton-loader
-            class="mb-6"
-            :boilerplate="true"
-            :elevation="2"
-            type="card-avatar, actions"
-          />
-        </v-col>
-        <v-col
-          cols="12"
-          md="4"
-        >
-          <v-skeleton-loader
-            class="mb-6"
-            :boilerplate="true"
-            :elevation="2"
-            type="card-avatar, actions"
-          />
-        </v-col>
-        <v-col
-          cols="12"
-          md="4"
-        >
-          <v-skeleton-loader
-            class="mb-6"
-            :boilerplate="true"
-            :elevation="2"
-            type="card-avatar, actions"
-          />
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-container v-else>
-      <v-row key="products">
-        <v-col
-          v-for="(item, i) in $store.getters['products/getList']"
-          :key="item.link + i"
-          cols="4"
-        >
-          <ProductsItems :item="item" />
-        </v-col>
-      </v-row>
-      <v-row class="justify-center">
-        <Paginations />
-      </v-row>
+    <v-container>
+      <div
+        v-infinite-scroll="loadMore"
+        :infinite-scroll-disabled="$store.getters['products/getIsLoading']"
+        infinite-scroll-distance="10"
+      >
+        <v-row>
+          <v-col
+            v-for="(item, i) in $store.getters['products/getList']"
+            :key="item.link + i"
+            cols="4"
+          >
+            <ProductsItems :item="item" />
+          </v-col>
+        </v-row>
+        <v-row class="justify-center" />
+        <v-row v-if="$store.getters['products/getIsLoading']">
+          <v-col
+            cols="12"
+            md="4"
+          >
+            <v-skeleton-loader
+              class="mb-6"
+              :boilerplate="true"
+              :elevation="2"
+              type="card-avatar, actions"
+            />
+          </v-col>
+          <v-col
+            cols="12"
+            md="4"
+          >
+            <v-skeleton-loader
+              class="mb-6"
+              :boilerplate="true"
+              :elevation="2"
+              type="card-avatar, actions"
+            />
+          </v-col>
+          <v-col
+            cols="12"
+            md="4"
+          >
+            <v-skeleton-loader
+              class="mb-6"
+              :boilerplate="true"
+              :elevation="2"
+              type="card-avatar, actions"
+            />
+          </v-col>
+        </v-row>
+      </div>
     </v-container>
   </v-main>
 </template>
 
 <script>
-
 import ProductsItems from "../ProductsItems";
-import Paginations from "../Paginations";
 
 export default {
   name: "Products",
-  components: {Paginations, ProductsItems},
+  components: {ProductsItems},
   props: {
     link: {
       required: false,
@@ -85,12 +83,17 @@ export default {
   data: () => ({
     loading: false,
     selection: 1,
+    page: 1,
   }),
   watch: {
     link: {
       immediate: true,
       handler() {
-        this.$store.dispatch('products/loadProducts', this.link);
+        this.page = 1;
+        this.$store.dispatch('products/loadProducts', {
+          link: this.link,
+          page: this.page
+        });
       }
     },
   },
@@ -98,6 +101,12 @@ export default {
     this.$store.dispatch('products/loadProducts', this.link);
   },
   methods: {
+    loadMore: function () {
+      this.$store.dispatch('products/loadProducts', {
+        link: this.link,
+        page: ++this.page
+      });
+    }
   }
 }
 </script>
