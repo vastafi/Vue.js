@@ -18,17 +18,9 @@
       <v-spacer />
 
       <v-responsive max-width="260">
-        <v-text-field
-          dense
-          flat
-          hide-details
-          rounded
-          solo-inverted
-        >
-          <template v-slot:label>
-            Search products
-          </template>
-        </v-text-field>
+        <Search       
+          v-model="inputData"
+        />
       </v-responsive>
     </v-container>
     <v-menu offset-y>
@@ -63,13 +55,10 @@
         </v-list-item>
         <v-sheet class="pa-5">
           <v-switch
-            v-model="isDarkMode"
+            v-model="$vuetify.theme.dark"
             inset
             :label="`Dark mode`"
-            @change="() => {$store.dispatch('darkMode/changeMode', !$vuetify.theme.dark);
-                            $vuetify.theme.dark = $store.getters['darkMode/getIsDarkModeEnabled'];
-            }
-            "
+            @change="changeDarkMode"
           />
         </v-sheet>
       </v-list>
@@ -78,10 +67,13 @@
 </template>
 
 <script>
+import Search from "./Search";
+import {mapGetters} from 'vuex';
 export default {
   name: "AppBar",
+  components: {Search},
   data: () => ({
-    isDarkMode: () => this.$store.getters['darkMode/getIsDarkModeEnabled'],
+    inputData:'',
     links: [
       {title: 'Products', route: '/products'},
       {title: 'Contacts', route: '/contacts'},
@@ -94,8 +86,25 @@ export default {
       {title: 'Log Out'},
     ],
   }),
-  mounted() {
-    this.$vuetify.theme.dark = this.$store.getters['darkMode/getIsDarkModeEnabled'];
+  computed: mapGetters({
+    isDarkModeEnabled: 'settings/getIsDarkModeEnabled'
+  }),
+  watch: {
+    isDarkModeEnabled: {
+      handler() {
+        this.$vuetify.theme.dark = this.isDarkModeEnabled
+      },
+      immediate: true
+    },
+    inputData: function() {
+      this.$store.dispatch('products/loadProducts', `/ru/search?query=${this.inputData}`)
+    }
+  },
+  methods: {
+    changeDarkMode() {
+      this.$store.commit('settings/mutateIsDarkModeEnabled', !this.isDarkModeEnabled);
+    }
+
   }
 }
 </script>

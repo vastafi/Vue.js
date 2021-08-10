@@ -2,9 +2,9 @@ export default {
     namespaced: true,
     state: {
         list:{
-
         },
-        isLoading: false
+        isLoading: false,
+
     },
     getters: {
         getList: (state) => state.list,
@@ -17,7 +17,6 @@ export default {
             store.commit('mutateList',await result.json());
             store.commit('mutateIsLoading', false);
         },
-
     },
     mutations: {
         mutateIsLoading(state, payload) {
