@@ -5,8 +5,8 @@
     hide-details
     rounded
     solo-inverted
-    :value="value"
-    @keypress="$emit('input', $event.target.value)"
+    :value="searchValue"
+    @keyup.enter="$emit('submitInput', $event.target.value)"
   >
     <template v-slot:label>
       Search products
@@ -17,13 +17,17 @@
 <script>
 export default {
   name: "Search",
+  model: {
+    prop: 'searchValue',
+    event: 'submitInput'
+  },
   props: {
     value: {
       type: String,
       required: false,
-      default: ''
-    }
-}
+      default: '',
+    },
+},
 }
 </script>
 

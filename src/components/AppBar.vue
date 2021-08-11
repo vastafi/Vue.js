@@ -18,8 +18,9 @@
       <v-spacer />
 
       <v-responsive max-width="260">
-        <Search       
-          v-model="inputData"
+        <Search
+          :search-value="inputData"
+          @submitInput="search"
         />
       </v-responsive>
     </v-container>
@@ -97,14 +98,19 @@ export default {
       immediate: true
     },
     inputData: function() {
-      this.$store.dispatch('products/loadProducts', `/ru/search?query=${this.inputData}`)
+      // this.$store.dispatch('products/loadProducts', `/ru/search?query=${this.inputData}`)
+      console.log(this.inputData)
     }
   },
   methods: {
     changeDarkMode() {
       this.$store.commit('settings/mutateIsDarkModeEnabled', !this.isDarkModeEnabled);
+    },
+    search(value) {
+      if (value !== '') {
+        this.$router.push(`/products?link=/ru/search/?query=${value}`)
+      }
     }
-
   }
 }
 </script>
