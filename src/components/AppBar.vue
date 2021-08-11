@@ -99,7 +99,6 @@ export default {
     },
     inputData: function() {
       // this.$store.dispatch('products/loadProducts', `/ru/search?query=${this.inputData}`)
-      console.log(this.inputData)
     }
   },
   methods: {
@@ -111,6 +110,7 @@ export default {
         this.$router.push(`/products?link=/ru/search/?query=${value}`)
       }
     }
+
   }
 }
 </script>
