@@ -1,12 +1,29 @@
 <template>
-  <div>Cart</div>
+  <div class="cart">
+    <h2>Your Cart</h2>
+    <p>
+      <i>Please add some products to cart.</i>
+    </p>
+    <p>Total:</p>
+    <p>
+      <button>
+        Checkout
+      </button>
+    </p>
+  </div>
 </template>
 
 <script>
+
 export default {
-  name: "Cart"
+  name: "Cart",
+  computed: {},
+  methods: {
+
+  }
 }
 </script>
+
 
 <style scoped>
 
