@@ -14,7 +14,7 @@
     <v-container>
       <div
         v-infinite-scroll="loadMore"
-        :infinite-scroll-disabled="$store.getters['products/getIsLoading']"
+        :infinite-scroll-disabled="false"
         infinite-scroll-distance="10"
       >
         <v-row>
@@ -29,6 +29,8 @@
         <v-row class="justify-center" />
         <v-row v-if="$store.getters['products/getIsLoading']">
           <v-col
+            v-for="index in 85"
+            :key="index"
             cols="12"
             md="4"
           >
@@ -96,9 +98,6 @@ export default {
         });
       }
     },
-  },
-  mounted() {
-    this.$store.dispatch('products/loadProducts', this.link);
   },
   methods: {
     loadMore: function () {

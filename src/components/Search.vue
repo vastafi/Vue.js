@@ -1,12 +1,13 @@
 <template>
   <v-text-field
+    :value="searchValue"
     dense
     flat
     hide-details
     rounded
     solo-inverted
-    :value="searchValue"
-    @keyup.enter="$emit('submitInput', $event.target.value)"
+    @keyup.enter="$emit('submitInput',$event.target.value)"
+    @keyup="$emit('changeInput',$event.target.value)"
   >
     <template v-slot:label>
       Search products
@@ -22,12 +23,13 @@ export default {
     event: 'submitInput'
   },
   props: {
-    value: {
+    searchValue: {
       type: String,
       required: false,
       default: '',
     },
 },
+
 }
 </script>
 

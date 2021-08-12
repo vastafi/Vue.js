@@ -21,6 +21,7 @@
         <Search
           :search-value="inputData"
           @submitInput="search"
+          @changeInput="inputData = $event"
         />
       </v-responsive>
     </v-container>
@@ -87,9 +88,14 @@ export default {
       {title: 'Log Out'},
     ],
   }),
-  computed: mapGetters({
+  computed:{
+   ...mapGetters({
     isDarkModeEnabled: 'settings/getIsDarkModeEnabled'
   }),
+  link: function (){
+     return this.$route.path
+  }
+  },
   watch: {
     isDarkModeEnabled: {
       handler() {
@@ -97,20 +103,27 @@ export default {
       },
       immediate: true
     },
-    inputData: function() {
-      // this.$store.dispatch('products/loadProducts', `/ru/search?query=${this.inputData}`)
-    }
+    link: function () {
+      if (this.link !== '/products') {
+        this.inputData = ''
+      }
+    },
   },
   methods: {
     changeDarkMode() {
       this.$store.commit('settings/mutateIsDarkModeEnabled', !this.isDarkModeEnabled);
     },
-    search(value) {
-      if (value !== '') {
-        this.$router.push(`/products?link=/ru/search/?query=${value}`)
+    search() {
+      if (this.inputData !== '' && this.inputData !== this.$route.query.search) {
+        this.searchValue = this.inputData
+        this.$router.push({
+          path: 'products',
+          query:{
+            link:`/ru/search/?query=${this.inputData}`
+          }
+        })
       }
     }
-
   }
 }
 </script>
