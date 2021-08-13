@@ -101,10 +101,12 @@ export default {
   },
   methods: {
     loadMore: function () {
-      this.$store.dispatch('products/loadProducts', {
-        link: this.link,
-        page: ++this.page
-      });
+      if (this.$store.getters['products/getList'].length !== 0) {
+        this.$store.dispatch('products/loadProducts', {
+          link: this.link,
+          page: ++this.page
+        });
+      }
     }
   }
 }
