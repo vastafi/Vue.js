@@ -26,7 +26,7 @@
     </div>
     <div
       class="scroll-y"
-      style="height: 200px"
+      style="height: 300px"
     >
       <v-card-title>{{ item.title }}</v-card-title>
 

@@ -1,18 +1,18 @@
 <template>
-  <v-text-field
-    :value="searchValue"
+  <v-autocomplete
+    value="searchValue"
     dense
     flat
-    hide-details
-    rounded
+    rounder
     solo-inverted
-    @keyup.enter="$emit('submitInput',$event.target.value)"
-    @keyup="$emit('changeInput',$event.target.value)"
-  >
-    <template v-slot:label>
-      Search products
-    </template>
-  </v-text-field>
+    hide-details
+    hide-no-data
+    item-text="title"
+    item-value="url"
+    :items="items"
+    :loading="loading"
+    :search-input.sync="search"
+  />
 </template>
 
 <script>
@@ -20,16 +20,38 @@ export default {
   name: "Search",
   model: {
     prop: 'searchValue',
-    event: 'submitInput'
+    event: 'changeSearch'
   },
   props: {
+    items:{
+      type: Array,
+      required: true,
+    },
+    loading:{
+      type : Boolean,
+      required : false,
+      default: false,
+    },
     searchValue: {
       type: String,
       required: false,
       default: '',
     },
 },
-
+  data :() => ({
+    search:''
+  }),
+  watch: {
+    search(){
+      this.$emit('changeSearch', this.search);
+    },
+    searchValue : {
+      immediate : true,
+      handler() {
+        this.search = this.searchValue;
+      }
+    }
+  },
 }
 </script>
 

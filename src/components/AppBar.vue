@@ -19,9 +19,9 @@
 
       <v-responsive max-width="260">
         <Search
-          :search-value="inputData"
-          @submitInput="search"
-          @changeInput="inputData = $event"
+          v-model="search"
+          :items="$store.getters['products/getSearchSuggestions']"
+          :loading="$store.getters['products/getIsSearchLoading']"
         />
       </v-responsive>
     </v-container>
@@ -76,6 +76,7 @@ export default {
   components: {Search},
   data: () => ({
     inputData:'',
+    search: '',
     links: [
       {title: 'Products', route: '/products'},
       {title: 'Contacts', route: '/contacts'},
@@ -108,12 +109,17 @@ export default {
         this.inputData = ''
       }
     },
+    search () {
+      console.log(this.search)
+      this.$store.dispatch('products/searchProducts', this.search);
+
+    },
   },
   methods: {
     changeDarkMode() {
       this.$store.commit('settings/mutateIsDarkModeEnabled', !this.isDarkModeEnabled);
     },
-    search() {
+    searchItem() {
       if (this.inputData !== '' && this.inputData !== this.$route.query.search) {
         this.searchValue = this.inputData
         this.$router.push({
