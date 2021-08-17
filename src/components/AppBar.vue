@@ -79,6 +79,7 @@ export default {
     search: '',
     links: [
       {title: 'Products', route: '/products'},
+      {title: 'Item', route: '/item'},
       {title: 'Contacts', route: '/contacts'},
       {title: 'About', route: '/about'},
     ],

@@ -39,7 +39,7 @@
                     <v-list-item-content>
                       <v-list-item-title class="text-wrap">
                         <router-link
-                          :to="{href:'/products', query: {link: linkChild.link}}"
+                          :to="{name:'products', query: {link: linkChild.link}}"
                         >
                           {{ linkChild.name }}
                         </router-link>

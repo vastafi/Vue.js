@@ -29,7 +29,15 @@ module.exports = {
         },
         ws: true,
         changeOrigin: true,
-      }
+      },
+      '^/api/item': {
+        target: 'http://localhost:9000/item',
+        pathRewrite: {
+          '^/api/item': ''
+        },
+        ws: true,
+        changeOrigin: true,
+      },
     }
   }
 }
