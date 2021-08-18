@@ -4,10 +4,12 @@ import About from "../components/pages/About";
 import Account from "../components/pages/Account";
 import Cart from "../components/pages/Cart";
 import Settings from "../components/pages/Settings";
-import Item from "../components/Item";
+import ItemDetails from "../components/ItemDetails";
 
 import VueRouter from 'vue-router'
 import Vue from 'vue'
+
+
 
 Vue.use(VueRouter)
 
@@ -19,7 +21,7 @@ const routes = [
     { path: '/cart', name:'cart', component: Cart },
     { path: '/settings',name:'settings',  component: Settings },
     { path: '/account',name:'account',  component: Account },
-    { path: '/item/:id', name:'item', component: Item, props: true},
+    { path: '/item/:id', name:'item', component: ItemDetails, props: true},
 
 ]
 
