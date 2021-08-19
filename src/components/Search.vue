@@ -1,38 +1,38 @@
 <template>
   <v-autocomplete
-    value="searchValue"
+    value="value"
     dense
     flat
     rounder
     solo-inverted
     hide-details
+    hide-selected
     hide-no-data
     item-text="title"
     item-value="url"
     :items="items"
     :loading="loading"
     :search-input.sync="search"
+    @change="$emit('onChange', $event)"
+    @keydown.enter="$emit('onSubmit', $event)"
   />
 </template>
 
 <script>
 export default {
   name: "Search",
-  model: {
-    prop: 'searchValue',
-    event: 'changeSearch'
-  },
   props: {
     items:{
       type: Array,
-      required: true,
+      required: false,
+      default: () => []
     },
     loading:{
       type : Boolean,
       required : false,
       default: false,
     },
-    searchValue: {
+    value: {
       type: String,
       required: false,
       default: '',
@@ -43,13 +43,13 @@ export default {
   }),
   watch: {
     search(){
-      this.$emit('changeSearch', this.search);
+      this.$emit('input', this.search);
     },
-    searchValue : {
-      immediate : true,
+    value : {
       handler() {
-        this.search = this.searchValue;
-      }
+        this.search = this.value;
+      },
+      immediate : true,
     }
   },
 }

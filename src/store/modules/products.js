@@ -1,3 +1,4 @@
+import {encode} from 'js-base64'
 export default {
     namespaced: true,
     state: {
@@ -16,7 +17,8 @@ export default {
         async loadProducts(store, {link, page}) {
             store.commit('mutateIsLoading', true)
             let appender = link.includes('?') ? '&' : '?'
-            const result = await fetch(`/api/products?link=${link}${appender}page=${page}`);
+            let fullLink = encode(`${link}${appender}page=${page}`)
+            const result = await fetch(`/api/products?linkBase64=${fullLink}`);
             if (page > 1) {
                 store.commit('mutateAddList', await result.json());
             } else {

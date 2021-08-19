@@ -22,6 +22,8 @@
           v-model="search"
           :items="$store.getters['products/getSearchSuggestions']"
           :loading="$store.getters['products/getIsSearchLoading']"
+          @onSubmit="onSubmit"
+          @onChange="onChange"
         />
       </v-responsive>
     </v-container>
@@ -70,7 +72,7 @@
 
 <script>
 import Search from "./Search";
-import {mapGetters} from 'vuex';
+import {mapGetters, mapMutations, mapActions} from 'vuex';
 export default {
   name: "AppBar",
   components: {Search},
@@ -94,9 +96,6 @@ export default {
    ...mapGetters({
     isDarkModeEnabled: 'settings/getIsDarkModeEnabled'
   }),
-  link: function (){
-     return this.$route.path
-  }
   },
   watch: {
     isDarkModeEnabled: {
@@ -105,32 +104,38 @@ export default {
       },
       immediate: true
     },
-    link: function () {
-      if (this.link !== '/products') {
-        this.inputData = ''
-      }
-    },
     search () {
-      console.log(this.search)
-      this.$store.dispatch('products/searchProducts', this.search);
-
+      this.searchProducts(this.search);
     },
   },
   methods: {
     changeDarkMode() {
       this.$store.commit('settings/mutateIsDarkModeEnabled', !this.isDarkModeEnabled);
     },
-    searchItem() {
-      if (this.inputData !== '' && this.inputData !== this.$route.query.search) {
-        this.searchValue = this.inputData
+    onSubmit() {
+      this.$router.push({
+        path: '/products',
+        query: {
+          link: `/ru/search?query=${this.search}`
+        }
+      })
+    },
+    onChange(e) {
+      if(this.search) {
         this.$router.push({
-          path: 'products',
-          query:{
-            link:`/ru/search/?query=${this.inputData}`
+          path: '/products',
+          query: {
+            link: e.url
           }
         })
       }
-    }
+    },
+    ...mapActions({
+      searchProducts: 'products/searchProducts'
+    }),
+    ...mapMutations({
+      mutateIsDarkModeEnabled: 'settings/mutateIsDarkModeEnabled'
+    })
   }
 }
 </script>
