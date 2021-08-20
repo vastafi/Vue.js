@@ -19,11 +19,8 @@
 
       <v-responsive max-width="260">
         <Search
-          v-model="search"
-          :items="$store.getters['products/getSearchSuggestions']"
-          :loading="$store.getters['products/getIsSearchLoading']"
-          @onSubmit="onSubmit"
-          @onChange="onChange"
+          v-model="inputData"
+          @submitInput="search"
         />
       </v-responsive>
     </v-container>
@@ -72,13 +69,13 @@
 
 <script>
 import Search from "./Search";
-import {mapGetters, mapMutations, mapActions} from 'vuex';
+import {mapGetters} from 'vuex';
 export default {
   name: "AppBar",
   components: {Search},
   data: () => ({
     inputData:'',
-    search: '',
+    suggestions: [],
     links: [
       {title: 'Products', route: '/products'},
       {title: 'Item', route: '/item'},
@@ -104,38 +101,36 @@ export default {
       },
       immediate: true
     },
-    search () {
-      this.searchProducts(this.search);
+    link: function () {
+      if (this.link !== '/products') {
+        this.inputData = ''
+      }
+    },
+    fullPath: function () {
+      if (!this.$route.query.link?.includes('/search/')) {
+        this.inputData = ''
+      }
+    },
+    inputData: function () {
+      this.$store.dispatch('suggestions/showSuggestions', this.inputData)
     },
   },
   methods: {
     changeDarkMode() {
       this.$store.commit('settings/mutateIsDarkModeEnabled', !this.isDarkModeEnabled);
     },
-    onSubmit() {
-      this.$router.push({
-        path: '/products',
-        query: {
-          link: `/ru/search?query=${this.search}`
-        }
-      })
-    },
-    onChange(e) {
-      if(this.search) {
+    search(value) {
+      if (value !== '' && value !== this.$route.query.search && !this.$store.getters['products/getIsLoading']) {
+        window.scrollTo(0, 0);
+        this.$store.commit('products/setList', [])
         this.$router.push({
-          path: '/products',
+          name: 'products',
           query: {
-            link: e.url
+            link: `/ru/search/?query=${value}`
           }
         })
       }
     },
-    ...mapActions({
-      searchProducts: 'products/searchProducts'
-    }),
-    ...mapMutations({
-      mutateIsDarkModeEnabled: 'settings/mutateIsDarkModeEnabled'
-    })
   }
 }
 </script>
