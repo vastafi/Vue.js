@@ -127,7 +127,7 @@ export default {
       isDarkModeEnabled: 'settings/getIsDarkModeEnabled'
     }),
     mobileLinks() {
-      return this.links.concat(this.items, [{title: 'Cart', icon: 'mdi-cart', route: ''}]);
+      return this.links.concat(this.items, [{title: 'Cart', route: ''}]);
     },
   },
   watch: {
