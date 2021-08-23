@@ -47,9 +47,6 @@
     <v-card-subtitle>
       {{ item.description }}
     </v-card-subtitle>
-    <v-card-title>
-      Регион : {{ item.location[0].name }} , {{ item.location[1].name }}
-    </v-card-title>
     <div
       class="text-h6 ma-6"
     >

@@ -35,13 +35,13 @@
     <br>
     <br>
     <v-row>
-      <v-col cols="3">
+      <v-col class="hidden-md-and-down col-sm-4">
         <DataPicker />
       </v-col>
 
       <v-spacer />
 
-      <v-col cols="8">
+      <v-col class=" col-md-8 col-12">
         <validation-observer
           ref="observer"
           v-slot="{ invalid }"

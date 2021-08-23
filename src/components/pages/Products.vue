@@ -12,6 +12,7 @@
       </h2>
     </v-card-title>
     <v-container>
+      <CategoryList class="hidden-lg-and-up col-md-12 col-12" />
       <div
         v-infinite-scroll="loadMore"
         :infinite-scroll-disabled="false"
@@ -21,7 +22,9 @@
           <v-col
             v-for="(item, i) in $store.getters['products/getList']"
             :key="item.link + i"
-            cols="4"
+            cols="12"
+            sm="6"
+            md="4"
           >
             <ProductsItems :item="item" />
           </v-col>
@@ -41,28 +44,6 @@
               type="card-avatar, actions"
             />
           </v-col>
-          <v-col
-            cols="12"
-            md="4"
-          >
-            <v-skeleton-loader
-              class="mb-6"
-              :boilerplate="true"
-              :elevation="2"
-              type="card-avatar, actions"
-            />
-          </v-col>
-          <v-col
-            cols="12"
-            md="4"
-          >
-            <v-skeleton-loader
-              class="mb-6"
-              :boilerplate="true"
-              :elevation="2"
-              type="card-avatar, actions"
-            />
-          </v-col>
         </v-row>
       </div>
     </v-container>
@@ -71,10 +52,11 @@
 
 <script>
 import ProductsItems from "../ProductsItems";
+import CategoryList from "../CategoryList";
 
 export default {
   name: "Products",
-  components: {ProductsItems},
+  components: {CategoryList, ProductsItems},
   props: {
     link: {
       required: false,

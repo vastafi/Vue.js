@@ -5,7 +5,7 @@
       fluid
     >
       <v-row>
-        <CategoryList />
+        <CategoryList class="hidden-md-and-down" />
         <v-col>
           <v-sheet
             min-height="70vh"
