@@ -1,4 +1,3 @@
-
 <template>
   <v-card
     class="mx-auto my-12"
