@@ -12,7 +12,6 @@
       </h2>
     </v-card-title>
     <v-container>
-      <CategoryList class="hidden-lg-and-up col-md-12 col-12" />
       <div
         v-infinite-scroll="loadMore"
         :infinite-scroll-disabled="false"
@@ -25,6 +24,7 @@
             cols="12"
             sm="6"
             md="4"
+            xl="3"
           >
             <ProductsItems :item="item" />
           </v-col>
@@ -52,11 +52,12 @@
 
 <script>
 import ProductsItems from "../ProductsItems";
-import CategoryList from "../CategoryList";
+
+import {mapActions} from 'vuex';
 
 export default {
   name: "Products",
-  components: {CategoryList, ProductsItems},
+  components: {ProductsItems},
   props: {
     link: {
       required: false,
@@ -74,7 +75,7 @@ export default {
       immediate: true,
       handler() {
         this.page = 1;
-        this.$store.dispatch('products/loadProducts', {
+        this.loadProducts({
           link: this.link,
           page: this.page
         });
@@ -82,14 +83,17 @@ export default {
     },
   },
   methods: {
-    loadMore: function () {
+    loadMore: function() {
       if (this.$store.getters['products/getList'].length !== 0) {
-        this.$store.dispatch('products/loadProducts', {
+        this.loadProducts({
           link: this.link,
           page: ++this.page
         });
       }
-    }
+    },
+    ...mapActions({
+      loadProducts: 'products/loadProducts'
+    }),
   }
 }
 </script>

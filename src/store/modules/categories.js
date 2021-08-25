@@ -1,9 +1,8 @@
+import {fetchCategories} from "../../api/999";
 export default {
     namespaced: true,
     state:{
-        list:[
-
-        ],
+        list:[],
         isLoading: false
     },
     getters: {
@@ -11,16 +10,19 @@ export default {
         getIsLoading: (state) => state.isLoading
     },
     actions:{
-    async fetch({ commit }){
+        async fetchCategories({commit}) {
         commit('mutateLoading', true);
-       const result = await fetch('/api/categories');
-        commit( 'mutateList', await result.json());
+        const result = await fetchCategories();
+        commit('mutateList', await result.data);
         commit('mutateLoading', false);
     }
     },
-    mutations:{
-        mutateList(state,payload){
-            state.list = payload
-                       }
+    mutations: {
+        mutateList(state, payload) {
+            state.list = payload;
+        },
+        mutateLoading(state, payload) {
+            state.isLoading = payload;
+        }
     }
 }
