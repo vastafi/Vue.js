@@ -75,7 +75,6 @@ export default {
     toggle: false,
     links: [
       {title: 'Products', route: '/products'},
-      {title: 'Item', route: '/item'},
       {title: 'Contacts', route: '/contacts'},
       {title: 'About', route: '/about'},
     ],
