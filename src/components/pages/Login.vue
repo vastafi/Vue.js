@@ -5,7 +5,7 @@
     style="border-radius:20px;position:relative;top:-50px;"
   >
     <v-card-subtitle class="title black--text pa-1">
-      Вход
+      Login
     </v-card-subtitle>
     <v-card-subtitle class="pa-1">
       Пройдите авторизацию <br> для начало покупок
@@ -40,15 +40,15 @@
     </v-btn>
 
     <p class="mt-3">
-      У вас нет аккаунта?
+      Don't have an account?
       <span
         class="red--text"
         style="cursor:pointer"
       >
         <router-link
-          :to="{name:'registration'}"
+          :to="{name:'register'}"
         >
-          Регистрация
+          Register
         </router-link>
       </span>
     </p>

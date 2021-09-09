@@ -37,7 +37,9 @@ export default {
         },
         async searchProducts(store, payload) {
             store.commit('mutateIsSearchLoading', true);
-            let result = fetchData.suggestions(payload);
+
+            const result = fetchData.suggestions(payload);
+
             store.commit('mutateSearchList', (await result).data);
             store.commit('mutateIsSearchLoading', false);
         },

@@ -1,7 +1,7 @@
 <template>
   <v-responsive :max-width="maxWidth">
     <v-autocomplete
-      value="value"
+      value="searchValue"
       dense
       flat
       hide-details
@@ -16,8 +16,7 @@
       item-text="title"
       item-value="url"
       return-object
-      @change="$emit('onChange', $event)"
-      @keydown.enter="$emit('onSubmit', $event)"
+      @keydown.enter="$emit('submitInput', search)"
     >
       <template v-slot:label>
         <v-icon
@@ -35,22 +34,25 @@
 <script>
 export default {
   name: "Search",
+  model: {
+    prop: 'searchValue',
+    event: 'changeSearch'
+  },
   props: {
-    value: {
-      type: String,
-      required: false,
-      default: ''
-    },
     items: {
       type: Array,
-      required: false,
-      default: () => []
+      required: true,
     },
     loading: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
+    searchValue: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   data: () => ({
     search: '',
@@ -66,18 +68,15 @@ export default {
   },
   watch: {
     search () {
-      this.$emit('input', this.search);
+      this.$emit('changeSearch', this.search);
     },
-    value: {
-      handler() {
-        this.search = this.value;
+    searchValue: {
+      immediate: true,     handler() {
+        this.search = this.searchValue;
       },
-      immediate: true
-    }
+        }
   },
-  methods: {
-  }
-}
+ }
 </script>
 
 <style scoped>

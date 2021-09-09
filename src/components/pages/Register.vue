@@ -1,37 +1,15 @@
 <template>
   <div>
     <v-card
-      dark
-      color="dark"
-      elevation-24
-      style="padding: 20px; border: 1px; border-radius: 50px; text-align: center;"
+      class="mx-auto elevation-5 text-center pa-5 mt-16"
+      max-width="600"
+      style="border-radius:20px;position:relative;top:-50px;"
     >
       <v-card-text>
-        <h4 class="display-2 font-weight-bold">
+        <v-card-subtitle class="title black--text pa-1">
           Register
-        </h4>
-        <hr>
-        <br>
+        </v-card-subtitle>
         <v-form>
-          <v-text-field
-            v-model="firstName"
-            clearable
-            label="First name"
-            prepend-icon="mdi-account-circle"
-            type="text"
-            color="white"
-            required
-            :rules="nameRules"
-          />
-          <v-text-field
-            v-model="lastName"
-            clearable
-            label="Last name"
-            prepend-icon="mdi-account-circle"
-            type="text"
-            color="white"
-            :rules="nameRules"
-          />
           <v-text-field
             v-model="username"
             clearable
@@ -91,40 +69,6 @@
         </p>
       </v-card-text>
     </v-card>
-    <v-dialog
-      v-model="active"
-      max-width="350"
-    >
-      <v-card>
-        <v-card-title class="text-h5">
-          Do you really want to leave?
-        </v-card-title>
-
-        <v-card-text>
-          Leaving this page results in loosing changes.
-        </v-card-text>
-
-        <v-card-actions>
-          <v-spacer />
-
-          <v-btn
-            color="green darken-1"
-            text
-            @click="clickNo"
-          >
-            Disagree
-          </v-btn>
-
-          <v-btn
-            color="green darken-1"
-            text
-            @click="clickYes"
-          >
-            Agree
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </div>
 </template>
 <script>
@@ -132,19 +76,13 @@ export default {
   name: "Register",
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      username: '',
+           username: '',
       email: '',
       password: '',
       passwordConfirm: '',
       active: false,
       resolve: null,
-      nameRules: [
-        v => !!v || 'This field is required',
-        v => v.length > 2 || "First and last name should have at least 3 characters"
-      ],
-      usernameRules: [
+            usernameRules: [
         v => !!v || 'This field is required',
         v => v.length > 2 || 'Username should have at least 3 characters'
       ],
@@ -178,7 +116,7 @@ export default {
     }
   },
   beforeRouteLeave (to, from, next) {
-    if(this.firstName || this.lastName || this.username ||
+    if( this.username ||
         this.email || this.password) {
       this.pop().then((answer) => next(answer));
     }

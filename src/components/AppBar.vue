@@ -176,7 +176,7 @@ export default {
     },
     onEnterPress(value) {
       this.$router.push({
-        name: 'products',
+        name: 'dashboard',
         query: {
           link: `/ru/search?query=${value}`
         }
