@@ -27,7 +27,8 @@
           v-model="search"
           :items="searchProducts"
           :loading="isSearchLoading"
-          @submitInput="onEnterPress"
+          @onSubmit="onSubmit"
+          @onChange="onChange"
         />
         <v-spacer />
         <div v-if="$store.getters['auth/getIsAuthorised']">
@@ -149,10 +150,7 @@ export default {
       searchProducts: 'products/getSearchSuggestions',
       isSearchLoading: 'products/getIsSearchLoading'
     }),
-    fullPath: function () {
-      return this.$route.query.link;
-    }
-  },
+      },
   watch: {
     isDarkModeEnabled: {
       handler() {
@@ -160,11 +158,7 @@ export default {
       },
       immediate: true
     },
-    fullPath: function () {
-      if (!this.fullPath?.includes('search')) {
-        this.inputData = ''
-      }
-    },
+
     search() {
       this.$store.dispatch('products/searchProducts', this.search)
           .catch((e) => eventBus.$emit('error', e.response.data.message))
@@ -174,13 +168,23 @@ export default {
     changeDarkMode() {
       this.mutateIsDarkModeEnabled(!this.isDarkModeEnabled);
     },
-    onEnterPress(value) {
+    onSubmit() {
       this.$router.push({
-        name: 'dashboard',
+        path: '/dashboard',
         query: {
-          link: `/ru/search?query=${value}`
+          link: `/ru/search?query=${this.search}`
         }
       })
+    },
+    onChange(e) {
+      if(this.search) {
+        this.$router.push({
+          path: '/dashboard',
+          query: {
+            link: e.url
+          }
+        })
+      }
     },
     logout() {
       this.$store.dispatch('auth/logout');

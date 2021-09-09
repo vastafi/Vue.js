@@ -13,7 +13,7 @@ export default [
     { path: '/cart', name:'cart', component: Cart },
     { path: '/settings', name:'settings',  component: Settings },
     { path: '/account', name:'account',  component: Account },
-    { path: '/item/:id', name:'item', component: ItemDetails, props: true},
+    { path: '/item/:id', name:'item', component: ItemDetails, props: true, access: ['admin', 'user']},
 
 ]
 
