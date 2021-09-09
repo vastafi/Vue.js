@@ -10,26 +10,35 @@
     <v-card-subtitle class="pa-1">
       Пройдите авторизацию <br> для начало покупок
     </v-card-subtitle>
-    <v-text-field
-      hide-details
-      color="red"
-      label="Логин или номер телефона"
-    />
-    <v-text-field
-      color="red"
-      label="Пароль"
-      type="password"
-    />
-    <v-card-actions>
-      <v-btn
-        color="red"
-        dark
-        block
-        rounded
-      >
-        Войти
-      </v-btn>
-    </v-card-actions>
+    <v-form>
+      <v-text-field
+        v-model="username"
+        clearable
+        label="Username"
+        prepend-icon="mdi-account-circle"
+        type="text"
+        color="white"
+        required
+      />
+      <v-text-field
+        v-model="password"
+        clearable
+        label="Password"
+        prepend-icon="mdi-lock"
+        type="password"
+        color="white"
+        required
+      />
+    </v-form>
+    <br>
+    <v-btn
+      color="grey darken-2"
+      large
+      @click="login"
+    >
+      Войти
+    </v-btn>
+
     <p class="mt-3">
       У вас нет аккаунта?
       <span
@@ -46,9 +55,30 @@
   </v-card>
 </template>
 <script>
-export default {
-  name: "Login"
-}
+  import {mapActions} from 'vuex';
+  export default {
+    name: "Login",
+    data() {
+      return {
+        username: '',
+        password: '',
+      }
+    },
+    methods: {
+      login() {
+        this.loginUser({
+          username: this.username,
+          password: this.password
+        });
+        this.$router.push({
+          name: 'products'
+        })
+      },
+      ...mapActions({
+        loginUser: 'auth/login'
+      })
+    }
+  }
 </script>
 
 <style scoped>

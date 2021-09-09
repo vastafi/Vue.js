@@ -1,76 +1,90 @@
 <template>
-  <v-parallax
-    dark
-    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-  >
-    <v-container>
-      <v-avatar
-        class="profile"
-        color="grey"
-        size="164"
-        v-on="on"
+  <v-list>
+    <v-list-item
+      v-for="(item, index) in filterItems"
+      :key="index"
+    >
+      <v-list-item-icon>
+        <v-icon>{{ item.icon }}</v-icon>
+      </v-list-item-icon>
+      <router-link
+        :to="{name: item.route}"
+        style="text-decoration: none"
+        class="text--primary"
       >
-        <v-img
-          src="https://sun6-21.userapi.com/s/v1/ig2/F4R-_f5Ia7vXFeYUxdEywjVK4b5eXbqFB0SbgevjvaJRfPoAeiVjmEhYuk9fIkQBWly7Wpssn6OR_xIGJdI-OxxD.jpg?size=400x0&quality=96&crop=425,532,539,539&ava=1"
-        />
-      </v-avatar>
-
-      <v-card-text>
-        <div class="font-weight-bold ml-8 mb-2">
-          Order history
+        <div v-if="item.title === 'Logout'">
+          <v-list-item-title @click="logout">
+            {{ item.title }}
+          </v-list-item-title>
         </div>
-
-        <v-timeline
-          align-top
-          dense
-        >
-          <v-timeline-item
-            v-for="message in messages"
-            :key="message.time"
-            :color="message.color"
-            small
-          >
-            <div>
-              <div class="font-weight-normal">
-                <strong>{{ message.from }}</strong> @{{ message.time }}
-              </div>
-              <div>{{ message.message }}</div>
-            </div>
-          </v-timeline-item>
-        </v-timeline>
-      </v-card-text>
-    </v-container>
-  </v-parallax>
+        <div v-else>
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </div>
+      </router-link>
+    </v-list-item>
+    <v-divider class="my-2" />
+    <v-sheet class="pa-5">
+      <v-switch
+        v-model="$vuetify.theme.dark"
+        inset
+        :label="`Dark mode`"
+        @change="changeDarkMode"
+      />
+    </v-sheet>
+  </v-list>
 </template>
 
 <script>
+import {mapGetters, mapMutations, mapActions} from "vuex";
 export default {
   name: "Account",
   data: () => ({
-    messages: [
-      {
-        from: 'Today',
-        message: `Canon i-SENSYS`,
-        time: '8:42am',
-        color: 'deep-purple lighten-1',
-      },
-      {
-        from: 'Yesterday',
-        message: 'Lenovo Vibe K5',
-        time: '10:37am',
-        color: 'green',
-      },
-      {
-        from: 'Yesterday',
-        message: 'Galaxy Note 20 Ultra',
-        time: '9:47am',
-        color: 'deep-purple lighten-1',
-      },
+    items: [
+      { title: 'Sign in', icon: 'fas fa-sign-in-alt', route: 'login'},
+      { title: 'Register', icon: 'fas fa-sign-in-alt', route: 'register'},
+      { title: 'Logout', icon: 'fas fa-sign-out-alt', route: ''},
     ],
+    isAuthenticated: false,
   }),
+  computed: {
+    filterItems() {
+      if(this.getIsAuthorised) {
+        return this.items.filter(item => item.title !== 'Sign in' && item.title !== 'Register');
+      }
+      return this.items.filter(item => item.title !== 'Logout');
+    },
+    ...mapGetters({
+      isDarkModeEnabled: 'settings/getIsDarkModeEnabled',
+      getIsAuthorised: 'auth/getIsAuthorised',
+    })
+  },
+  watch: {
+    isDarkModeEnabled: {
+      handler() {
+        this.$vuetify.theme.dark = this.isDarkModeEnabled
+      },
+      immediate: true
+    },
+  },
+  methods: {
+    changeDarkMode() {
+      this.mutateIsDarkModeEnabled(!this.isDarkModeEnabled);
+    },
+    logout() {
+      this.logoutUser();
+      this.$router.push({
+        name: 'login'
+      })
+    },
+    ...mapMutations({
+      mutateIsDarkModeEnabled: 'settings/mutateIsDarkModeEnabled'
+    }),
+    ...mapActions({
+      logoutUser: 'auth/logout',
+    })
+  },
 }
 </script>
 
 <style scoped>
-
 </style>

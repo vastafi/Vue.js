@@ -7,8 +7,7 @@ import Settings from "../components/pages/Settings";
 import ItemDetails from "../components/ItemDetails";
 
 export default [
-    { path: '', name:'home', redirect: '/products'},
-    { path: '/products', name:'products', component: Products, props: (router) => ({link: router.query.link})},
+    { path: '/', name:'products', component: Products, props: (router) => ({link: router.query.link})},
     { path: '/contacts', name:'contacts', component: Contacts },
     { path: '/about', name:'about',  component: About },
     { path: '/cart', name:'cart', component: Cart },
