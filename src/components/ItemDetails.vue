@@ -141,9 +141,6 @@ export default {
       required: true,
     },
   },
-  created() {
-    this.loadItem(this.id).catch((e) => eventBus.$emit(ERROR_MESSAGE, e));
-  },
   computed: {
     ...mapGetters({
       item:'item/getItem',
@@ -160,7 +157,11 @@ export default {
     goBack() {
       this.$router.back();
     }
-  }
+  },
+  // eslint-disable-next-line vue/order-in-components
+  created() {
+    this.loadItem(this.id).catch((e) => eventBus.$emit(ERROR_MESSAGE, e));
+  },
 }
 </script>
 
