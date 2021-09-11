@@ -6,6 +6,7 @@ export default {
     },
     getters: {
         getIsAuthorised: (state) => state.isAuthorised,
+        getUsername: (state) => state.username,
     },
     actions: {
         login(store, {username}) {

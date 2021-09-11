@@ -1,8 +1,10 @@
 import api from './api';
 
-export const fetchData = {
-    suggestions: (search) => api.get('suggestions', {params: {search}}),
-    productList: (linkBase64) => api.get('page', {params: {linkBase64}}),
-    categories: () => api.get('categories'),
-    item: (link) => api.get('item', {params: {link}})
+export const fetchSuggestions = (search) => api.get('suggestions', {params: {search}})
+export const fetchProducts = (linkBase64) => api.get('page', {params: {linkBase64}})
+export const fetchCategories = () => api.get('categories')
+export const fetchItem = (link) => api.get('item', {params: {link}})
+
+export const testFunction = function() {
+    return 'test function';
 }

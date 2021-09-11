@@ -52,7 +52,8 @@
 
 <script>
 import ProductsItems from "../ProductsItems";
-
+import eventBus from "../../eventBus";
+import {ERROR_MESSAGE} from "../../constants/eventBus";
 import {mapActions} from 'vuex';
 
 export default {
@@ -78,7 +79,7 @@ export default {
         this.loadProducts({
           link: this.link,
           page: this.page
-        });
+        }).catch((e) => eventBus.$emit(ERROR_MESSAGE, e));
       }
     },
   },

@@ -1,13 +1,14 @@
 <template>
   <v-snackbar
     v-model="snackbar"
-    :timeout="100000"
+    :multi-line="multiLine"
+    rounded="pill"
   >
     {{ text }}
 
     <template v-slot:action="{ attrs }">
       <v-btn
-        color="blue"
+        color="red"
         text
         v-bind="attrs"
         @click="snackbar = false"
@@ -20,23 +21,26 @@
 
 <script>
 import eventBus from "../eventBus";
+import {ERROR_MESSAGE} from "../constants/eventBus";
+
 export default {
   name: "ErrorMessage",
   data() {
     return {
       snackbar: false,
+      multiLine: true,
       text: '',
     }
   },
   mounted() {
     let timeOutId
-    eventBus.$on('error', (e) => {
+    eventBus.$on(ERROR_MESSAGE, (e) => {
       clearTimeout(timeOutId)
       this.snackbar = true;
-      this.text = e;
+      this.text = e.response.data.message;
       timeOutId = setTimeout(() => {
         this.snackbar = false;
-      }, 10000);
+      }, 5000);
     })
   }
 }

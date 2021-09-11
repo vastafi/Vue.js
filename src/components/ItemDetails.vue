@@ -118,13 +118,21 @@
       >
         Add to cart
       </v-btn>
+      <v-btn
+        color="orange lighten-2"
+        text
+        @click="goBack"
+      >
+        Go Back
+      </v-btn>
     </v-card-actions>
   </v-container>
 </template>
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
-
+import eventBus from "../eventBus";
+import {ERROR_MESSAGE} from "../constants/eventBus";
 export default {
   name: "ItemDetails",
   props: {
@@ -133,8 +141,8 @@ export default {
       required: true,
     },
   },
-  mounted() {
-    this.loadItem(this.id)
+  created() {
+    this.loadItem(this.id).catch((e) => eventBus.$emit(ERROR_MESSAGE, e));
   },
   computed: {
     ...mapGetters({
@@ -142,11 +150,17 @@ export default {
       isLoading: 'item/getIsLoading'
     })
   },
+  mounted() {
+    window.scroll(0, 0);
+  },
   methods: {
     ...mapActions({
       loadItem: 'item/loadItem'
-    })
-  },
+    }),
+    goBack() {
+      this.$router.back();
+    }
+  }
 }
 </script>
 

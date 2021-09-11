@@ -50,6 +50,8 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import eventBus from "../eventBus";
+import {ERROR_MESSAGE} from "../constants/eventBus";
 export default {
   name: "Categories",
   computed: {
@@ -73,7 +75,8 @@ export default {
   },
   mounted() {
     if(!this.getCategories.length)
-      this.fetchCategories();
+      this.fetchCategories()
+          .catch((e) => eventBus.$emit(ERROR_MESSAGE, e));
   },
   methods: {
     ...mapActions({
