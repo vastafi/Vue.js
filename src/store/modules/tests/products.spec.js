@@ -17,8 +17,8 @@ describe("products", () => {
     it("should have default value false", () => {
         expect(store.getters['products/getIsSearchLoading']).toBe(false);
     })
-    it("if search is performed", () => {
-        testFunction.mockReturnValue('search loading');
+    it("if products is loading", () => {
+        testFunction.mockReturnValue('products is loading');
         store.commit('products/mutateIsSearchLoading', true);
         expect(store.getters['products/getIsSearchLoading']).toBeTruthy();
         expect(testFunction).toBeCalled();

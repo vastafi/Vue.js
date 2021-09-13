@@ -1,3 +1,4 @@
+import {testFunction} from "../../api/999";
 import {fetchCategories} from "../../api/999";
 export default {
     namespaced: true,
@@ -23,6 +24,7 @@ export default {
         },
         mutateLoading(state, payload) {
             state.isLoading = payload;
+            console.log(testFunction());
         }
     }
 }

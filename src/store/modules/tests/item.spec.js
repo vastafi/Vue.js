@@ -17,7 +17,7 @@ describe("item", () => {
     it("should have default value false", () => {
         expect(store.getters['item/getIsLoading']).toBe(false);
     })
-    it("if search is performed", () => {
+    it("if item is loading", () => {
         testFunction.mockReturnValue('items loading');
         store.commit('item/mutateIsLoading', true);
         expect(store.getters['item/getIsLoading']).toBeTruthy();

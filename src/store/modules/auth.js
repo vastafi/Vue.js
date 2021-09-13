@@ -1,3 +1,5 @@
+import {testFunction} from "../../api/999";
+
 export default {
     namespaced: true,
     state: {
@@ -21,6 +23,7 @@ export default {
     mutations: {
         mutateIsAuthorised(state, payload) {
             state.isAuthorised = payload;
+            console.log(testFunction());
         },
         mutateUsername(state, payload) {
             state.username = payload;
