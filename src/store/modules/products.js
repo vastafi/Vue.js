@@ -1,5 +1,6 @@
 import { encode } from 'js-base64';
 import {fetchSuggestions, fetchProducts} from "../../api/999";
+import {testFunction} from "../../api/999";
 
 export default {
     namespaced: true,
@@ -50,6 +51,7 @@ export default {
         },
         mutateIsSearchLoading(state, payload) {
             state.isSearchLoading = payload;
+            console.log(testFunction());
         },
         mutateSearchList(state, payload) {
             state.search = payload;

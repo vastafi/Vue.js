@@ -1,4 +1,4 @@
-import {fetchItem} from "../../api/999";
+import {fetchItem, testFunction} from "../../api/999";
 export default {
     namespaced: true,
     state: {
@@ -21,6 +21,7 @@ export default {
     mutations: {
         mutateIsLoading(state, payload) {
             state.isLoading = payload
+            console.log(testFunction());
         },
         mutateItem(state, payload) {
             state.item = payload
