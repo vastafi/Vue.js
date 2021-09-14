@@ -14,8 +14,9 @@ jest.mock('../../../api/999', () => ({
     testFunction: jest.fn()
 }))
 describe("categories", () => {
-    it("should have default value false", () => {
-        expect(store.getters['categories/getIsLoading']).toBe(false);
+    it('should have default value an empty string', function () {
+        expect(store.getters['categories/getList']).toStrictEqual([])
+        expect(store.getters['categories/getIsLoading']).toBeFalsy()
     })
     it("if categories is loading", () => {
         testFunction.mockReturnValue('categories is loading');

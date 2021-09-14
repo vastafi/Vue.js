@@ -1,14 +1,14 @@
 import { encode } from 'js-base64';
-import {fetchSuggestions, fetchProducts,testFunction} from "../../api/999";
-
-export default {
-    namespaced: true,
-    state: {
+import {fetchSuggestions, fetchProducts} from "../../api/999";
+export const state={
         list: [],
         isLoading: false,
         search: [],
         isSearchLoading: false,
-    },
+}
+export default {
+    namespaced: true,
+    state,
     getters: {
         getList: (state) =>state.list,
         getIsLoading: (state) => state.isLoading,
@@ -50,8 +50,7 @@ export default {
         },
         mutateIsSearchLoading(state, payload) {
             state.isSearchLoading = payload;
-            console.log(testFunction());
-        },
+                    },
         mutateSearchList(state, payload) {
             state.search = payload;
         }

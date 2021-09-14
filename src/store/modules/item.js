@@ -6,8 +6,10 @@ export default {
         isLoading: false,
     },
     getters: {
-        getItem: ({item}) => item,
-        getIsLoading: (state) => state.isLoading,
+        getIsLoading(state) {
+            return state.isLoading;
+        },
+        getItem: ({item}) => item
     },
     actions: {
         async loadItem(store, payload) {

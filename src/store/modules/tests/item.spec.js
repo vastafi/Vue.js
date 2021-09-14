@@ -13,10 +13,11 @@ const store = new Vuex.Store({
 jest.mock('../../../api/999', () => ({
     testFunction: jest.fn()
 }))
-describe("item", () => {
-    it("should have default value false", () => {
-        expect(store.getters['item/getIsLoading']).toBe(false);
-    })
+describe('item', () => {
+        it('should have default value an empty object', function () {
+            expect(store.getters['item/getIsLoading']).toBeFalsy()
+            expect(store.getters['item/getItem']).toEqual({})
+        });
     it("if item is loading", () => {
         testFunction.mockReturnValue('items loading');
         store.commit('item/mutateIsLoading', true);
