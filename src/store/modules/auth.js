@@ -1,4 +1,4 @@
-import {testFunction} from "../../api/999";
+
 
 export default {
     namespaced: true,
@@ -7,8 +7,12 @@ export default {
         username: '',
     },
     getters: {
-        getIsAuthorised: (state) => state.isAuthorised,
-        getUsername: (state) => state.username,
+        getIsAuthorised(state) {
+            return state.isAuthorised
+        },
+        getUsername(state) {
+            return state.username
+        }
     },
     actions: {
         login(store, {username}) {
@@ -23,8 +27,7 @@ export default {
     mutations: {
         mutateIsAuthorised(state, payload) {
             state.isAuthorised = payload;
-            console.log(testFunction());
-        },
+                 },
         mutateUsername(state, payload) {
             state.username = payload;
         }

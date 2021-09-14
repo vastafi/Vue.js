@@ -1,5 +1,5 @@
-import {testFunction} from "../../api/999";
-import {fetchCategories} from "../../api/999";
+import {fetchCategories,testFunction} from "../../api/999";
+
 export default {
     namespaced: true,
     state:{
