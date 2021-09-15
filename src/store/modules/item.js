@@ -1,4 +1,5 @@
-import {fetchItem, testFunction} from "../../api/999";
+import {fetchItem} from "../../api/999";
+
 export default {
     namespaced: true,
     state: {
@@ -6,9 +7,7 @@ export default {
         isLoading: false,
     },
     getters: {
-        getIsLoading(state) {
-            return state.isLoading;
-        },
+        getIsLoading: (state) => state.isLoading,
         getItem: ({item}) => item
     },
     actions: {
@@ -17,14 +16,12 @@ export default {
             const result = await fetchItem('/ru/' + payload);
             store.commit('mutateItem', await result.data);
             store.commit('mutateIsLoading', false);
-
         }
     },
     mutations: {
         mutateIsLoading(state, payload) {
             state.isLoading = payload
-            console.log(testFunction());
-        },
+                   },
         mutateItem(state, payload) {
             state.item = payload
         }

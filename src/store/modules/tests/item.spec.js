@@ -1,7 +1,6 @@
 import item from '../item';
 import Vuex from "vuex";
 import Vue from "vue";
-import {testFunction} from "../../../api/999";
 
 Vue.use(Vuex);
 
@@ -18,10 +17,8 @@ describe('item', () => {
             expect(store.getters['item/getIsLoading']).toBeFalsy()
             expect(store.getters['item/getItem']).toEqual({})
         });
-    it("if item is loading", () => {
-        testFunction.mockReturnValue('items loading');
+    it('should change to true', () => {
         store.commit('item/mutateIsLoading', true);
         expect(store.getters['item/getIsLoading']).toBeTruthy();
-        expect(testFunction).toBeCalled();
     })
 })

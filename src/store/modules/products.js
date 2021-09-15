@@ -1,6 +1,7 @@
 import { encode } from 'js-base64';
 import {fetchSuggestions, fetchProducts} from "../../api/999";
-export const state={
+
+export const state = {
         list: [],
         isLoading: false,
         search: [],

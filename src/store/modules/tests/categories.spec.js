@@ -18,10 +18,8 @@ describe("categories", () => {
         expect(store.getters['categories/getList']).toStrictEqual([])
         expect(store.getters['categories/getIsLoading']).toBeFalsy()
     })
-    it("if categories is loading", () => {
-        testFunction.mockReturnValue('categories is loading');
+     it('should change to true', () => {
         store.commit('categories/mutateLoading', true);
         expect(store.getters['categories/getIsLoading']).toBeTruthy();
-        expect(testFunction).toBeCalled();
     })
 })
