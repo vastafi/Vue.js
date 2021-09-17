@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -81,59 +81,53 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const state = {
+    items: {}
+}
+export default {
     namespaced: true,
-    state: {
-        items: {}
-    },
+    state,
     getters: {
-        getItem: <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>d) =&gt; (<span class="cstat-no" title="statement not covered" >state.items[id])</span></span>
+        getItem: (state) =&gt; state.items
     },
-    actions: {},
-    mutations: {
-<span class="fstat-no" title="function not covered" >        mu</span>tateItem(state, itemList) {
-<span class="cstat-no" title="statement not covered" >            for (let item of itemList) {</span>
-                const price = <span class="cstat-no" title="statement not covered" >item.price;</span>
-                const lastPrice = <span class="cstat-no" title="statement not covered" >state.items?.[item.link]?.price[state.items?.[item.link]?.price.length - 1];</span>
-                let priceList = <span class="cstat-no" title="statement not covered" >state.items[item.link]?.price ?? [];</span>
-<span class="cstat-no" title="statement not covered" >                if (lastPrice) {</span>
-<span class="cstat-no" title="statement not covered" >                    if (price !== lastPrice) {</span>
-<span class="cstat-no" title="statement not covered" >                        priceList.push(price)</span>
-                    }
-                } else {
-<span class="cstat-no" title="statement not covered" >                    priceList.push(price)</span>
-                }
+    actions: {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                state.items[item.link] = {price: priceList};</span>
+    },
+    mutations: {
+        mutateItem(state, itemList) {
+            for(let item of itemList) {
+                const price = item.price;
+                const lastPrice = state.items?.[item.link]?.price[state.items?.[item.link]?.price.length - 1];
+                let priceList = state.items[item.link]?.price ?? [];
+                if(price !== lastPrice) {
+                    priceList.push(price);
+                }
+                state.items[item.link] = {price: priceList};
             }
         }
     }
@@ -144,7 +138,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Sep 15 2021 20:38:49 GMT+0300 (Eastern European Summer Time)
+                at Fri Sep 17 2021 16:23:50 GMT+0300 (Eastern European Summer Time)
             </div>
         </div>
         <script src="prettify.js"></script>

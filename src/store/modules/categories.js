@@ -1,11 +1,12 @@
 import {fetchCategories} from "../../api/999";
 
+export const state = {
+    list: [],
+    isLoading: false
+}
 export default {
     namespaced: true,
-    state:{
-        list:[],
-        isLoading: false
-    },
+    state,
     getters: {
         getList: (state) => state.list,
         getIsLoading: (state) => state.isLoading

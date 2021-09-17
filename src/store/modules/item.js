@@ -1,11 +1,12 @@
 import {fetchItem} from "../../api/999";
 
+export const state = {
+    item: {},
+    isLoading: false,
+}
 export default {
     namespaced: true,
-    state: {
-        item: {},
-        isLoading: false,
-    },
+    state,
     getters: {
         getIsLoading: (state) => state.isLoading,
         getItem: ({item}) => item

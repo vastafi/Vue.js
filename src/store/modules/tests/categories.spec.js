@@ -1,6 +1,8 @@
 import categories from '../categories';
 import Vuex from "vuex";
 import Vue from "vue";
+import {state} from "../categories";
+import {fetchCategories} from "../../../api/999";
 
 Vue.use(Vuex);
 
@@ -14,21 +16,27 @@ jest.mock('../../../api/999', () => ({
 
 }))
 describe("categories", () => {
-    it('should have default value an empty string', function () {
-        expect(store.getters['categories/getList']).toStrictEqual([])
-        expect(store.getters['categories/getIsLoading']).toBeFalsy()
+    beforeEach(() => {
+        fetchCategories.mockReturnValue({
+            data: ['testCategories']
+        })
+    });
+    it('should have default value', () => {
+        expect(store.getters['categories/getIsLoading']).toBe(state.isLoading);
+        expect(store.getters['categories/getList']).toBe(state.list);
     });
 
-     it('should change to true', () => {
+    it('should change to true', () => {
         store.commit('categories/mutateLoading', true);
         expect(store.getters['categories/getIsLoading']).toBeTruthy();
     });
 
-    it('should receive an array of categories and isLoading should be false', async () => {
-        await store.dispatch('categories/fetchCategories', ). then(() => {
-            expect(store.getters['categories/getList']).toHaveLength(533);
-            expect(store.getters['categories/getList'][0].name).toBe('Транспорт');
-            expect(store.getters['categories/getIsLoading']).toBeFalsy();
-        });
-    });
+    it('should fetch categories', async () => {
+        const categories = store.dispatch('categories/fetchCategories');
+        expect(fetchCategories).toBeCalled();
+        expect(store.getters['categories/getIsLoading']).toBeTruthy();
+        await categories;
+        expect(store.getters['categories/getIsLoading']).toBeFalsy();
+        expect(store.getters['categories/getList']).toEqual(['testCategories']);
+    })
 })
