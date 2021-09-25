@@ -5,10 +5,11 @@ import router from "./routes";
 import store from "./store";
 import "./plugins/infiniteScroll"
 import './guards';
-import './interceptors'
+import './interceptors';
+import MyComponent from "./MyComponent";
 
 Vue.config.productionTip = false
-
+Vue.component('MyComponent', MyComponent)
 new Vue({
     vuetify,
     router,

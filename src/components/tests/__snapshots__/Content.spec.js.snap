@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content should mount 1`] = `
+<v-main>
+  <v-container>
+    <routerview-stub />
+     
+    <errormessage-stub />
+  </v-container>
+</v-main>
+`;

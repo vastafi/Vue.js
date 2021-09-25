@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBar should match snapshot 1`] = `
+<div>
+  <v-app-bar-stub
+    app=""
+    class="indigo"
+    flat=""
+  >
+    <v-container-stub
+      class="py-0 fill-height"
+    >
+      <v-toolbar-items-stub
+        class="hidden-lg-and-up"
+      >
+        <v-app-bar-nav-icon-stub />
+      </v-toolbar-items-stub>
+       
+      <v-btn-stub
+        activeclass=""
+        class="hidden-md-and-down"
+        color="black"
+        tag="button"
+        text="true"
+        to="/products"
+        type="button"
+      >
+        
+        Products
+      
+      </v-btn-stub>
+      <v-btn-stub
+        activeclass=""
+        class="hidden-md-and-down"
+        color="black"
+        tag="button"
+        text="true"
+        to="/contacts"
+        type="button"
+      >
+        
+        Contacts
+      
+      </v-btn-stub>
+      <v-btn-stub
+        activeclass=""
+        class="hidden-md-and-down"
+        color="black"
+        tag="button"
+        text="true"
+        to="/about"
+        type="button"
+      >
+        
+        About
+      
+      </v-btn-stub>
+       
+      <v-spacer-stub />
+       
+      <search-stub
+        id="search"
+        items=""
+        value=""
+      />
+       
+      <v-spacer-stub />
+       
+      <div
+        class="authorization"
+      >
+        <router-link-stub
+          ariacurrentvalue="page"
+          class="auth-links"
+          event="click"
+          id="log-in"
+          tag="a"
+          to="[object Object]"
+        >
+          <v-icon-stub>
+            mdi-login-variant
+          </v-icon-stub>
+           
+          <div
+            class="auth-title hidden-sm-and-down"
+          >
+            
+            Sign In
+          
+          </div>
+        </router-link-stub>
+         
+        <router-link-stub
+          ariacurrentvalue="page"
+          class="auth-links"
+          event="click"
+          id="sign-up"
+          tag="a"
+          to="[object Object]"
+        >
+          <v-icon-stub>
+            mdi-account-plus
+          </v-icon-stub>
+           
+          <div
+            class="auth-title hidden-sm-and-down"
+          >
+            
+            Sign Up
+          
+          </div>
+        </router-link-stub>
+      </div>
+    </v-container-stub>
+  </v-app-bar-stub>
+   
+  <v-navigation-drawer-stub
+    fixed="true"
+    height="100%"
+    minivariantwidth="56"
+    mobilebreakpoint="1264"
+    src=""
+    tag="aside"
+    temporary="true"
+    width="256"
+  >
+    <categories-stub
+      class="col-md-12 col-12"
+    />
+  </v-navigation-drawer-stub>
+</div>
+`;
